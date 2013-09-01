@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @guide.title %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @guide.user_id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @guide.category_id %>
+</p>
+
+<p>
+  <b>Subtitle:</b>
+  <%= @guide.subtitle %>
+</p>
+
+<p>
+  <b>Overview:</b>
+  <%= @guide.overview %>
+</p>
+
+<p>
+  <b>Img:</b>
+  <%= @guide.img %>
+</p>
+
+
+<%= link_to 'Edit', edit_guide_path(@guide) %> |
+<%= link_to 'Back', guides_path %>

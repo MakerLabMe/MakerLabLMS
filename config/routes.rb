@@ -1,4 +1,10 @@
 MakerLabLMS::Application.routes.draw do
+  resources :categories
+
+
+  resources :guides
+
+
   authenticated :user do
     root :to => 'home#index'
   end
