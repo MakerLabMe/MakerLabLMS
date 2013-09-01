@@ -1,32 +1,15 @@
 <h1>Listing guides</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>User</th>
-    <th>Category</th>
-    <th>Subtitle</th>
-    <th>Overview</th>
-    <th>Img</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @guides.each do |guide| %>
-  <tr>
-    <td><%= guide.title %></td>
-    <td><%= guide.user_id %></td>
-    <td><%= guide.category_id %></td>
-    <td><%= guide.subtitle %></td>
-    <td><%= guide.overview %></td>
-    <td><%= guide.img %></td>
-    <td><%= link_to 'Show', guide %></td>
-    <td><%= link_to 'Edit', edit_guide_path(guide) %></td>
-    <td><%= link_to 'Destroy', guide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <%= link_to  guide do %>
+      <div class="box span3">
+        <h3><%= guide.title %></h3>
+        <h5><%= guide.subtitle %></h5>
+        <%= image_tag guide.img unless guide.img.empty? %>
+        <p><%= guide.overview %></p>
+      </div>
+    <% end %>
 <% end %>
-</table>
 
 <br />
 
