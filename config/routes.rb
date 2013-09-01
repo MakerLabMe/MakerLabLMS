@@ -1,8 +1,12 @@
 MakerLabLMS::Application.routes.draw do
+
+
   resources :categories
 
 
-  resources :guides
+  resources :guides do
+    resources :articles
+  end
 
 
   authenticated :user do
