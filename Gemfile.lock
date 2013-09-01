@@ -84,6 +84,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    masonry-rails (0.2.0)
+      rails
     mime-types (1.23)
     multi_json (1.7.5)
     orm_adapter (0.4.0)
@@ -173,6 +175,7 @@ DEPENDENCIES
   factory_girl_rails (>= 4.2.0)
   figaro (>= 0.6.3)
   jquery-rails
+  masonry-rails
   quiet_assets (>= 1.0.2)
   rails (= 3.2.12)
   rolify (>= 3.2.0)

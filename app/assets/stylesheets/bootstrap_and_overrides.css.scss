@@ -4,6 +4,7 @@ body { padding-top: 60px; }
 
 .box {
   border: 1px solid #ccc;
+  width: 215px;
   padding: 0px 10px;
   background: white;
 
@@ -15,4 +16,19 @@ body { padding-top: 60px; }
 .box:hover {
   background: #eee;
 }
+
+#masonry-container {
+  background: #FFF;
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
 

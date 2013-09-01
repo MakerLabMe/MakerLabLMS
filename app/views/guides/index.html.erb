@@ -1,16 +1,31 @@
 <h1>Listing guides</h1>
+<%= link_to 'New Guide', new_guide_path %>
 
-<% @guides.each do |guide| %>
-    <%= link_to  guide do %>
-      <div class="box span3">
+<div id="masonry-container" class="transitions-enabled has-gutters clearfix">
+  <% @guides.each do |guide| %>
+    <div class="box ">
+      <%= link_to  guide do %>
         <h3><%= guide.title %></h3>
         <h5><%= guide.subtitle %></h5>
         <%= image_tag guide.img unless guide.img.empty? %>
         <p><%= guide.overview %></p>
-      </div>
-    <% end %>
-<% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <br />
 
-<%= link_to 'New Guide', new_guide_path %>
+
+<script>
+var $container = $('#masonry-container').masonry();
+$container.imagesLoaded( function(){
+
+  $container.masonry({
+    itemSelector: '.box',
+    columnWidth: 215,
+    gutterWidth: 30
+  });
+
+});
+</script>
