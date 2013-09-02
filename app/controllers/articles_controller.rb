@@ -16,6 +16,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+    @articles = @guide.articles
+    @next_article = @articles.where("id > #{params[:id]}").first
+    @pre_article = @articles.where("id < #{params[:id]}").last
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,7 +46,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
-    #@article.guide_id = params[:guide_id]
+    @article.guide_id = params[:guide_id]
 
     respond_to do |format|
       if @article.save
@@ -60,6 +63,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
+    @article.guide_id = params[:guide_id]
 
     respond_to do |format|
       if @article.update_attributes(params[:article])

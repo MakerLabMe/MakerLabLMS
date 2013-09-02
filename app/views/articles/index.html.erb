@@ -1,27 +1,49 @@
-<h1>Listing articles</h1>
+<div class="sidebar">
+  <h1>
+    <%= @guide.title %>
+  </h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Guide</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <span class="subtitle">
+    <%= @guide.subtitle %>
+  </span>
+<ul class="nav nav-list sidenav ">
+  <% @articles.each do |article| %>
+    <li class="<%= 'active' if (article.id ==  params[:id].to_i)  %>">
+      <%= link_to [@guide,article] do %>
+        <i class="icon-chevron-right"></i> 
+        <%= article.title %>
+      <% end %>
+    </li>
+  <% end %>
+  <li class="single-page active">
+    <%= link_to guide_articles_path(@guide) do %>
+      Single Page
+      <i class="icon-list-alt"></i>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
+  </li>
+  <li>
+    <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
+  </li>
+</ul>
+
+</div>
+
+<div class="article span8">
 
 <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.guide_id %></td>
-    <td><%= article.content %></td>
-    <td><%= link_to 'Show', guide_article_path(@guide,article) %></td>
-    <td><%= link_to 'Edit', edit_guide_article_path(@guide,article) %></td>
-    <td><%= link_to 'Destroy', [@guide,article], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="content-head clearfix">
+    <h4 class="float-left"><%= article.title %></h4>
+    <p class="float-right">
+      By <%= link_to @guide.user.name, @guide.user %>
+    </p>
+  </div>
+  <div class="article-content">
+    <%= article.content %>
+  </div>
 <% end %>
-</table>
 
-<br />
+  </div>
 
-<%= link_to 'New Article', new_guide_article_path %>

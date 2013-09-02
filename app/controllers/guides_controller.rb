@@ -14,6 +14,9 @@ class GuidesController < ApplicationController
   # GET /guides/1.json
   def show
     @guide = Guide.find(params[:id])
+    @articles = @guide.articles
+    @first_article = @articles.first
+    @next_article = @articles.first(2).last
 
     respond_to do |format|
       format.html # show.html.erb

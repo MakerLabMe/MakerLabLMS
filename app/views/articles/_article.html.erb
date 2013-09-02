@@ -1,0 +1,7 @@
+<li class="<%= 'active' if (article.id ==  current_id) || (current_id.nil? == false && article.id == articles.first.id) %>">
+<%= link_to [guide,article] do %>
+  <i class="icon-chevron-right"></i> 
+  <%= article.title %>
+<% end %>
+</li>
+

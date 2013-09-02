@@ -1,35 +1,66 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @guide.title %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @guide.user_id %>
-</p>
-
 <p>
   <b>Category:</b>
   <%= @guide.category_id %>
 </p>
 
-<p>
-  <b>Subtitle:</b>
-  <%= @guide.subtitle %>
-</p>
+<div class="sidebar">
+  <h1>
+    <%= @guide.title %>
+  </h1>
 
-<p>
-  <b>Overview:</b>
-  <%= @guide.overview %>
-</p>
+  <span class="subtitle">
+    <%= @guide.subtitle %>
+  </span>
+  <ul class="nav nav-list sidenav ">
+  <% @articles.each do |article| %>
+    <li class="<%= 'active' if article.id == @first_article.id  %>">
+      <%= link_to [@guide,article] do %>
+        <i class="icon-chevron-right"></i> 
+        <%= article.title %>
+      <% end %>
+    </li>
+  <% end %>
 
-<p>
-  <b>Img:</b>
-  <%= @guide.img %>
-</p>
+  <li class="single-page">
+    <%= link_to guide_articles_path(@guide) do %>
+      Single Page
+      <i class="icon-list-alt"></i>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
+  </li>
+  <li>
+    <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
+  </li>
+
+  </ul>
+</div>
+
+<div class="article span8">
+
+  <div class="content-head clearfix">
+    <h4 class="float-left"><%= @first_article.try(:title) || "Please add new article" %></h4>
+    <p class="float-right">
+      <%= link_to 'Edit this article', edit_guide_article_path(@guide,@first_article) if@first_article %> | 
+      By <%= link_to @guide.user.name, @guide.user %>
+    </p>
+  </div>
+  <div class="article-content">
+    <%= @first_article.try(:content) || "Please add new article" %>
+  </div>
+
+  <div class="article-footer clearfix">
+    <div class="next float-right">
+      <%= link_to @next_article.title + " >",[@guide,@next_article] if @next_article %>
+    </div>
+  </div>
+  <div class="gray center">
+    <%= "last edited at : " + @first_article.try(:updated_at).to_s %>
+  </div>
+  
+
+</div>
 
 
-<%= link_to 'Edit', edit_guide_path(@guide) %> |
-<%= link_to 'Back', guides_path %>
