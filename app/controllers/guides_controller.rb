@@ -1,4 +1,5 @@
 class GuidesController < ApplicationController
+  load_and_authorize_resource
   # GET /guides
   # GET /guides.json
   def index

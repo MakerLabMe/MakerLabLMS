@@ -21,12 +21,14 @@
       <i class="icon-list-alt"></i>
     <% end %>
   </li>
-  <li>
-    <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
-  </li>
-  <li>
-    <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
-  </li>
+  <% if can? :update, @guide %>
+    <li>
+      <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
+    </li>
+    <li>
+      <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
+    </li>
+  <% end %>
 </ul>
 
 </div>

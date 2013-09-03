@@ -21,12 +21,14 @@
       <i class="icon-list-alt"></i>
     <% end %>
   </li>
-  <li>
-    <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
-  </li>
-  <li>
-    <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
-  </li>
+  <% if can? :update, @guide %>
+    <li>
+      <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
+    </li>
+    <li>
+      <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
+    </li>
+  <% end %>
 </ul>
 
 </div>
@@ -36,7 +38,9 @@
   <div class="content-head clearfix">
     <h4 class="float-left"><%= @articles.find(params[:id]).title %></h4>
     <p class="float-right">
-      <%= link_to 'Edit this article', edit_guide_article_path(@guide,@article) %> | 
+      <% if can? :update, @guide %>
+        <%= link_to 'Edit this article', edit_guide_article_path(@guide,@article) %> | 
+      <% end %>
       By <%= link_to @guide.user.name, @guide.user %>
     </p>
   </div>
