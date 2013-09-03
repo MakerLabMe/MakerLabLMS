@@ -1,5 +1,21 @@
 <h1>Listing guides</h1>
-<%= link_to 'New Guide', new_guide_path %>
+  <div class="category float-left">
+    <b>Cateories: </b>
+  </div>
+
+<% @categories.each do |category| %>
+  <div class="category float-left">
+    <%= link_to category.title, category %> | 
+    <% if can? :update,category %>
+      <p><%= link_to 'Edit', edit_category_path(category) %> | 
+      <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<% if can? :update,@guides %>
+  <%= link_to 'New Guide', new_guide_path %>
+<% end %>
 
 <div id="masonry-container" class="transitions-enabled has-gutters clearfix">
   <% @guides.each do |guide| %>

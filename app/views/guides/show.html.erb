@@ -1,7 +1,8 @@
-<p>
-  <b>Category:</b>
-  <%= @guide.category_id %>
-</p>
+<h5>
+  <%= link_to "All",root_path %> >
+  <%= link_to @category.title, @category %> > 
+  <%= link_to @guide.title, @guide %>
+</h5>
 
 <div class="sidebar">
   <h1>
@@ -28,12 +29,14 @@
     <% end %>
   </li>
 
-  <li>
-    <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
-  </li>
-  <li>
-    <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
-  </li>
+  <% if can? :update, @guide %>
+    <li>
+      <%= link_to 'Edit this guide', edit_guide_path(@guide), class:"" %>
+    </li>
+    <li>
+      <%= link_to 'Add new article', new_guide_article_path(@guide), class:"" %>
+    </li>
+  <% end %>
 
   </ul>
 </div>
@@ -43,7 +46,9 @@
   <div class="content-head clearfix">
     <h4 class="float-left"><%= @first_article.try(:title) || "Please add new article" %></h4>
     <p class="float-right">
-      <%= link_to 'Edit this article', edit_guide_article_path(@guide,@first_article) if@first_article %> | 
+      <% if can? :update, @guide %>
+        <%= link_to 'Edit this article', edit_guide_article_path(@guide,@first_article) if@first_article %> | 
+      <% end %>
       By <%= link_to @guide.user.name, @guide.user %>
     </p>
   </div>

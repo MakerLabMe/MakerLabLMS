@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @category = Category.find(@guide.category_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,6 +21,7 @@ class ArticlesController < ApplicationController
     @articles = @guide.articles
     @next_article = @articles.where("id > #{params[:id]}").first
     @pre_article = @articles.where("id < #{params[:id]}").last
+    @category = Category.find(@guide.category_id)
 
     respond_to do |format|
       format.html # show.html.erb

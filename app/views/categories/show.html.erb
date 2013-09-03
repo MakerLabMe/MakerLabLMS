@@ -1,9 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
+<h5>
+  <%= link_to "All",root_path %> >
   <%= @category.title %>
-</p>
+</h5>
+<% if can? :update,@category %>
+  <%= link_to 'New Guide', new_guide_path %>
+<% end %>
+
+<div id="masonry-container" class="transitions-enabled has-gutters clearfix">
+  <% @guides.each do |guide| %>
+    <div class="box ">
+      <%= link_to  guide do %>
+        <h3><%= guide.title %></h3>
+        <h5><%= guide.subtitle %></h5>
+        <%= image_tag guide.img unless guide.img.empty? %>
+        <p><%= guide.overview %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<br />
+
+
+<script>
+var $container = $('#masonry-container').masonry();
+$container.imagesLoaded( function(){
+
+  $container.masonry({
+    itemSelector: '.box',
+    columnWidth: 215,
+    gutterWidth: 30
+  });
+
+});
+</script>
 
 
 <%= link_to 'Edit', edit_category_path(@category) %> |

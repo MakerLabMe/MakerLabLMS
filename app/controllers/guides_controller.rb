@@ -4,6 +4,7 @@ class GuidesController < ApplicationController
   # GET /guides.json
   def index
     @guides = Guide.all
+    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +19,7 @@ class GuidesController < ApplicationController
     @articles = @guide.articles
     @first_article = @articles.first
     @next_article = @articles.first(2).last
+    @category = Category.find(@guide.category_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,6 +47,7 @@ class GuidesController < ApplicationController
   # POST /guides.json
   def create
     @guide = Guide.new(params[:guide])
+    @guide.user_id = current_user.id
 
     respond_to do |format|
       if @guide.save
@@ -61,6 +64,7 @@ class GuidesController < ApplicationController
   # PUT /guides/1.json
   def update
     @guide = Guide.find(params[:id])
+    @guide.user_id = current_user.id
 
     respond_to do |format|
       if @guide.update_attributes(params[:guide])

@@ -1,23 +1,17 @@
 <h1>Listing categories</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @categories.each do |category| %>
-  <tr>
-    <td><%= category.title %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="category float-left">
+    <%= link_to category.title, category %> | 
+    <% if can? :update,@categories %>
+      <p><%= link_to 'Edit', edit_category_path(category) %> | 
+      <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
+  </div>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New Category', new_category_path %>
+<% if can? :update,@categories %>
+  <%= link_to 'New Category', new_category_path %>
+<% end %>
