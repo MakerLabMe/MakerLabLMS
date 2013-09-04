@@ -53,7 +53,7 @@
   </div>
 
   <div class="article-content">
-    <%= @articles.find(params[:id]).content %>
+    <%= markdown(@articles.find(params[:id]).content) %>
   </div>
 
   <div class="article-footer clearfix">

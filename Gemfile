@@ -24,3 +24,4 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 
 gem 'masonry-rails'
 gem 'mysql2'
+gem 'redcarpet'
