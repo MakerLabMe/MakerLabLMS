@@ -2,23 +2,23 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-.box {
+.box-guide {
   border: 1px solid #ccc;
   width: 215px;
   padding: 0px 10px;
   background: white;
+  margin: 5px 0;
 
   h5,p {
     color: black;
   }
 }
 
-.box:hover {
+.box-guide:hover {
   background: #eee;
 }
 
 #masonry-container {
-  background: #FFF;
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 5px;

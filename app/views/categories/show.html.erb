@@ -8,7 +8,7 @@
 
 <div id="masonry-container" class="transitions-enabled has-gutters clearfix">
   <% @guides.each do |guide| %>
-    <div class="box ">
+    <div class="box-guide ">
       <%= link_to  guide do %>
         <h3><%= guide.title %></h3>
         <h5><%= guide.subtitle %></h5>
@@ -27,7 +27,7 @@ var $container = $('#masonry-container').masonry();
 $container.imagesLoaded( function(){
 
   $container.masonry({
-    itemSelector: '.box',
+    itemSelector: '.box-guide',
     columnWidth: 215,
     gutterWidth: 30
   });
