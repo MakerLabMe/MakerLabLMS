@@ -53,7 +53,7 @@
     </p>
   </div>
   <div class="article-content">
-    <%= @first_article.try(:content) || "Please add new article" %>
+    <%= markdown(@first_article.try(:content)) || "Please add new article" %>
   </div>
 
   <div class="article-footer clearfix">
