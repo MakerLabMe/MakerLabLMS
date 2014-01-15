@@ -14,6 +14,11 @@ body { padding-top: 60px; }
   }
 }
 
+.half {
+  width: 49%;
+  float: left;
+}
+
 .box-guide:hover {
   background: #eee;
 }

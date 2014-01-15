@@ -1,0 +1,21 @@
+<h1>Listing products</h1>
+
+
+<% @products.each do |product| %>
+  <div class="half">
+    <%= image_tag product.img unless product.img.empty? %>
+    <h4><%= product.name %></h4>
+    <p><%= markdown(product.descrption) %></p>
+    <% if can? :update,@products %>
+        <%= link_to 'Show', product %>
+        <%= link_to 'Edit', edit_product_path(product) %>
+        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+<% end %>
+
+<br />
+
+<% if can? :update,@products %>
+  <%= link_to 'New Product', new_product_path %>
+<% end %>

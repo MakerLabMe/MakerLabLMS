@@ -1,6 +1,9 @@
 MakerLabLMS::Application.routes.draw do
 
 
+  resources :products
+
+
   resources :categories
 
 
@@ -8,11 +11,12 @@ MakerLabLMS::Application.routes.draw do
     resources :articles
   end
 
+  match '/' => 'guides#index', :constraints => { :subdomain => 'learn' }
 
   authenticated :user do
     root :to => 'guides#index'
   end
-  root :to => "guides#index"
+  root :to => "home#index"
   devise_for :users
   resources :users
 end
