@@ -1,6 +1,9 @@
 MakerLabLMS::Application.routes.draw do
 
 
+  resources :downloads
+
+
   resources :products
 
 

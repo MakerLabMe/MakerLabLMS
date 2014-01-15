@@ -1,0 +1,16 @@
+
+<% @downloads.each do |download| %>
+    <h3><%= download.title %></h3>
+    <%= markdown(download.description) %>
+    <% if can? :update,@downloads %>
+        <%= link_to 'Show', download %>
+        <%= link_to 'Edit', edit_download_path(download) %>
+        <%= link_to 'Destroy', download, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+<% end %>
+
+<br />
+
+<% if can? :update,@downloads %>
+  <%= link_to 'New Download', new_download_path %>
+<% end %>
