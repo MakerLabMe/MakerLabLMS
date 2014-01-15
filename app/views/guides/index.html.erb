@@ -24,7 +24,7 @@
         <h3><%= guide.title %></h3>
         <h5><%= guide.subtitle %></h5>
         <%= image_tag guide.img unless guide.img.empty? %>
-        <p><%= guide.overview %></p>
+        <p><%= markdown(guide.overview) %></p>
       <% end %>
     </div>
   <% end %>
