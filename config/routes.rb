@@ -14,8 +14,8 @@ MakerLabLMS::Application.routes.draw do
     resources :articles
   end
 
-  root :to => "home#index"
   match '/' => 'guides#index', :constraints => { :subdomain => 'learn' }
+  root :to => "home#index"
 
   authenticated :user do
     root :to => 'guides#index'
