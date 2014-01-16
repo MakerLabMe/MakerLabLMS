@@ -3,7 +3,7 @@ class GuidesController < ApplicationController
   # GET /guides
   # GET /guides.json
   def index
-    @guides = Guide.all
+    @guides = Guide.order("created_at DESC")
     @categories = Category.all
 
     respond_to do |format|
