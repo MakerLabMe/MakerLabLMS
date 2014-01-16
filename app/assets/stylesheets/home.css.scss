@@ -1,3 +1,99 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.showcases-header{
+  width: 60%;
+  text-align: center;
+  margin: 60px 0 10px;
+  font-weight: 200;
+  margin-bottom: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header{
+  padding-bottom: 9px;
+  border-bottom: 1px solid #EEE;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.item {
+  height:360px;
+}
+
+.masthead-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 460px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4),0 0 30px rgba(0, 0, 0, 0.075);
+  background-repeat: repeat-x;
+  background-image: -webkit-linear-gradient(45deg, #02010F, #4699A8);
+  background-image: -moz-linear-gradient(45deg, #02010F, #4699A8);
+  background-image: linear-gradient(45deg, #02010F, #4699A8);
+}
+
+.carousel {
+position: relative;
+margin-bottom: 0px;
+margin-left: -70px;
+margin-right: -70px;
+margin-top: -40px;
+line-height: 1;
+}
+
+.carousel-caption {
+  background-color:transparent;
+  position: absolute;
+padding-top: 20px;
+color: #FFF;
+text-align: center;
+text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+z-index: 10;
+bottom: 40px;
+left: 15%;
+right: 15%;
+  p {
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: 1.4;
+  margin: 0 0 10px;
+  }
+}
+
+.masthead h1 {
+font-size: 100px;
+line-height: 1;
+letter-spacing: -2px;
+font-weight: bold;
+}
+
+.masthead h2 {
+font-size: 30px;
+font-weight: 200;
+line-height: 1.25;
+}
+
+.bc-social {
+padding: 15px 0;
+text-align: center;
+}
+
+.bc-social-buttons {
+margin-left: 0;
+margin-bottom: 0;
+padding-left: 0;
+list-style: none;
+li {
+display: inline-block;
+padding: 5px 8px;
+line-height: 1;
+font-size: 16px;
+}
+}
