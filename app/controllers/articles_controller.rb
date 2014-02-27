@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_filter :get_guide
 
   def index
-    @articles = Article.all
+    @articles = @guide.articles.all
     @category = Category.find(@guide.category_id)
 
     respond_to do |format|

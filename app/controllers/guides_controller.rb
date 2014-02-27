@@ -51,7 +51,8 @@ class GuidesController < ApplicationController
 
     respond_to do |format|
       if @guide.save
-        format.html { redirect_to @guide, notice: 'Guide was successfully created.' }
+        @article = @guide.articles.new()
+        format.html { redirect_to [@guide,@article], notice: 'Guide was successfully created.' }
         format.json { render json: @guide, status: :created, location: @guide }
       else
         format.html { render action: "new" }
@@ -68,7 +69,8 @@ class GuidesController < ApplicationController
 
     respond_to do |format|
       if @guide.update_attributes(params[:guide])
-        format.html { redirect_to @guide, notice: 'Guide was successfully updated.' }
+        @article = @guide.articles.new()
+        format.html { redirect_to [@guide,@article], notice: 'Guide was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
