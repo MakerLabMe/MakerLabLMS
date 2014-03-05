@@ -1,3 +1,6 @@
+
+<% content_for(:title) { "MakerLab:"+@guide.title.to_s + "-" + @article.title.to_s } %>
+
 <h5>
   <%= link_to "All",root_path %> >
   <%= link_to @category.title, @category %> > 
