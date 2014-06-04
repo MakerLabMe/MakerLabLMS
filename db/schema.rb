@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204032057) do
+ActiveRecord::Schema.define(:version => 20140603151147) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   add_index "advertisements", ["expire_date"], :name => "index_advertisements_on_expire_date"
   add_index "advertisements", ["start_date"], :name => "index_advertisements_on_start_date"
 
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.integer  "guide_id"
+    t.text     "content"
+    t.string   "complete"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "comments_count",  :default => 0
+    t.boolean  "comments_closed", :default => false
+  end
+
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"
     t.string   "bookmarkable_type"
@@ -51,6 +62,12 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
 
   add_index "bookmarks", ["bookmarkable_id", "bookmarkable_type"], :name => "index_bookmarks_on_bookmarkable_id_and_bookmarkable_type"
   add_index "bookmarks", ["user_id"], :name => "index_bookmarks_on_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "cloud_files", :force => true do |t|
     t.string   "content_type"
@@ -87,6 +104,19 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   add_index "followings", ["followed_user_id"], :name => "index_followings_on_followed_user_id"
   add_index "followings", ["user_id", "followed_user_id"], :name => "index_followings_on_user_id_and_followed_user_id", :unique => true
   add_index "followings", ["user_id"], :name => "index_followings_on_user_id"
+
+  create_table "guides", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "subtitle"
+    t.string   "overview"
+    t.string   "img"
+    t.boolean  "publish"
+    t.integer  "feature_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "nodes", :force => true do |t|
     t.string   "name"

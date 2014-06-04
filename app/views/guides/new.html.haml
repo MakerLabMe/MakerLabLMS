@@ -1,0 +1,6 @@
+.box
+  .cell
+    = build_navigation [link_to("学习系统", guides_path)]
+  .inner
+    %h2 创建新教程
+    = render 'form', :guide => @guide, :topic => @guide

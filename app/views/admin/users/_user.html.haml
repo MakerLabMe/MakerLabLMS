@@ -15,6 +15,8 @@
     - else
       %span.gray 普通
 
+  %td.auto{:align => :left}= user.sign_in_count
+  %td.auto{:align => :left}= user.last_sign_in_at
   %td.auto{:align => :left}= user.email
   %td.auto{:align => :right}
     = user.reward

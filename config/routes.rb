@@ -1,4 +1,26 @@
 Rabel::Application.routes.draw do
+  resources :articles do
+    resources :comments
+  end
+
+
+  resources :guides do
+    resources :bookmarks
+    resources :articles
+    get :new_from_home, :on => :collection
+    post :create_from_home, :on => :collection
+    member do
+      get :move
+      get :edit_title
+      put :update_title
+    end
+  end
+
+
+  resources :categories
+
+
+
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'
   get 'member/:nickname' => 'users#show', :as => :member
@@ -45,6 +67,10 @@ Rabel::Application.routes.draw do
   end
 
   namespace :admin do
+
+    resources :categories
+    resources :guides
+
     resources :planes do
       resources :nodes
       post :sort, :on => :collection
@@ -71,7 +97,7 @@ Rabel::Application.routes.draw do
 
     resource :site_settings
     resources :topics, :advertisements, :cloud_files, :rewards
-    
+
     resources :notifications do
       delete :clear, :on => :collection
     end

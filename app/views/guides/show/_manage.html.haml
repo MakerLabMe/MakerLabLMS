@@ -1,0 +1,12 @@
+- if can? :update, @guide
+  - content_for :rightbar do
+    .box
+      .box-header
+        教程管理
+      .cell
+        = link_to '修改标题', edit_title_guide_path( @guide), :remote => true, :class => :btn
+        = link_to '编辑全部', edit_guide_path(@guide), :class => :btn
+      .cell
+        = link_to '移动到新分类', move_guide_path(@guide), :remote => true, :class => :btn
+      .inner
+        = link_to '删除此话题', guide_path(@guide), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-sm btn-danger'

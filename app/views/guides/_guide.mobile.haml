@@ -1,0 +1,18 @@
+- guide_user = guide.user
+.cell
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td.avatar{:valign => :top}
+        = user_profile_avatar_link(guide_user, :medium)
+      %td{:valign => :top, :style => 'padding-left: 8px;'}
+        %span.fade
+          = user_profile_link(guide_user)
+          &nbsp;in&nbsp;
+          = link_to guide.category.title, guide.category
+        .sep5
+        %span.bigger
+          = link_to guide.title, guide
+        %span.created
+          = time_ago_in_words(guide.created_at)
+
+

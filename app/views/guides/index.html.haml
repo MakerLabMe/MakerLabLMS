@@ -1,0 +1,8 @@
+.box
+  .cell
+    = build_navigation([@title])
+    .pull-right
+      = link_to '创建新教程', new_from_home_guides_path, :class => 'btn btn-success btn-sm btn-new-topic'
+  = render @guides
+  .inner{:align => :center}
+    = paginate @guides

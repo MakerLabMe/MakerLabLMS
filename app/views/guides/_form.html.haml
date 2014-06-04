@@ -1,0 +1,10 @@
+.alert.alert-info 如果标题已经包含你想说的话，内容可以留空
+= simple_form_for guide do |f|
+  %a{:name => 'new_topic'}/
+  = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
+  = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
+  = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
+  = f.input :subtitle, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
+  = f.input :overview,:as => :text, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
+  = f.association :category, :label => false, :prompt => '选择一个分类'
+  = f.submit (guide.new_record? ? '创建新教程' : '提交修改'), :class => 'btn btn-primary', :data => {:disable_with => t('tips.submitting')}

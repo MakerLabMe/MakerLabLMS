@@ -35,6 +35,8 @@ module Admin::BaseHelper
           ['外观', 'palette', admin_appearance_path],
           ['用户', 'users', admin_users_path],
           ['位面节点', 'nodes', admin_planes_path],
+          ['教程分类', 'cagegories', admin_categories_path],
+          ['学习教程', 'guides', admin_guides_path],
           ['讨论话题', 'topics', admin_topics_path],
           ['页面', 'pages', admin_pages_path],
           ['广告位', 'ads', admin_advertisements_path],

@@ -8,6 +8,10 @@ class Ability
       topic.allow_modification_by?(user)
     end
 
+    can :update, Guide do |guide|
+      guide.allow_modification_by?(user)
+    end
+
     can :update, Bookmark do |bookmark|
       bookmark.user == user
     end

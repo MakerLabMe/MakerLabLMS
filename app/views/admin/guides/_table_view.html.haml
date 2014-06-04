@@ -1,0 +1,26 @@
+%table.topics.table
+  %thead
+    %tr
+      %th.w50 ID
+      %th.auto{:align => :left} 分类
+      %th.auto{:align => :left} 标题
+      %th.auto{:align => :left} 作者
+      %th.auto{:align => :right} 创建时间
+      %th.w100 操作
+  %tbody
+    - guides.each do |guide|
+      %tr.highlight
+        %td.w50
+          %strong.green
+            = guide.id
+        %td.auto
+          = link_to guide.category.title, category_path(guide.category)
+        %td.auto
+          = link_to guide.title, guide
+        %td.auto
+          = user_profile_link(guide.user)
+        %td.auto{:align => :right}
+          %small= time_ago_in_words(guide.created_at)
+        %td.w100
+          = link_to '编辑', edit_guide_path(guide), :class => 'btn btn-sm'
+          = link_to '删除', admin_guide_path(guide), :class => 'btn btn-sm btn-danger', :method => :delete, :data => {:confirm => t(:delete_confirm)}

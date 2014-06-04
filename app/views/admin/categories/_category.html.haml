@@ -1,0 +1,10 @@
+.box.plane{:id => category.html_id}
+  .cell
+    .fr
+      = admin_edit_button('修改分类', category, :remote => true, :class => 'dark')
+      %span.gray /
+      - if category.can_delete?
+        = admin_delete_button(category, :remote => true)
+    = link_to category.title, category_path(category)
+//  = render plane.nodes.default_order
+.sep10

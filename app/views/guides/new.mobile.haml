@@ -1,0 +1,10 @@
+- add_breadcrumb link_to("学习系统", guides_path, :class => :black)
+- add_breadcrumb '新建主题'
+.cell
+  = form_for @guide do |f|
+    = f.text_field :title, :class => :sll
+    .sep5
+    = f.text_area :overview, :class => :mll
+    .sep5
+    = f.submit '创建新教程', :class => :btn
+

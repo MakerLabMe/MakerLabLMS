@@ -1,0 +1,6 @@
+= simple_form_for [:admin, category], :remote => true do |f|
+  %legend= @title
+  = f.input :title, :label => '名称', :input_html => {:autofocus => true}
+  .form-actions
+    = f.submit '保存', :class => 'btn btn-small btn-primary'
+

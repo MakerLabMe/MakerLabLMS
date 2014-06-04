@@ -1,0 +1,6 @@
+= form_for @guide, :remote => :true do |f|
+  = label_tag '移动到新分类'
+  %br
+  = select_tag "new_category_id", options_for_select(Category.all.map { |category| [category.title, category.id] })
+  %br
+  = f.submit '开始移动', :class => 'btn btn-small'

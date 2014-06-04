@@ -1,0 +1,12 @@
+.cell.topic{:class => guide_user.can_manage_site? ? 'admin' : ''}
+  .avatar.pull-left
+    = user_profile_avatar_link(guide_user, :medium)
+  .item_title
+    %h2.topic_title
+      = link_to guide.title, guide_path(guide), :class => 'rabel topic'
+    .topic-meta
+      = link_to guide_node.title, guide_node, :class => :node
+      %span.muted •
+      = user_profile_link(guide_user, :class => :dark)
+      %span.muted •
+
