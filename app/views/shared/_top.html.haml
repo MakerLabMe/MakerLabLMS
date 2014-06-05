@@ -7,6 +7,8 @@
   #Navigation
     %ul
       %li= link_to '首页', root_path, :class => link_class
+      %li= link_to '学习', guides_path, :class => link_class
+      %li= link_to '论坛', topics_path, :class => link_class
       - if user_signed_in?
         %li= user_profile_link(current_user, :class => link_class)
         %li= link_to '个人设置', settings_path, :class => link_class

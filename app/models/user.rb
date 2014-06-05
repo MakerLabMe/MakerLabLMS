@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   has_many :rewards
 
   has_many :guides, :dependent => :destroy
+  has_many :articles
 
   has_many :follower_relationships, :class_name => 'Following', :foreign_key => 'followed_user_id', :dependent => :destroy
   has_many :followed_relationships, :class_name => 'Following', :foreign_key => 'user_id', :dependent => :destroy

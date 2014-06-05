@@ -1,0 +1,24 @@
+- comments_count = article.comments_count
+- last_replied_by = article.last_replied_by
+.cell.topic{:class => article_user.can_manage_site? ? 'admin' : ''}
+  .avatar.pull-left
+    = user_profile_avatar_link(article_user, :medium)
+  .item_title
+    - if comments_count > 0
+      .pull-right
+        .badge.badge-info= comments_count
+    %h2.topic_title
+      = link_to article_guide.title + "-" + article.title, guide_article_path(article_guide,article), :class => 'rabel topic'
+    .topic-meta
+      = link_to article_guide.title, article_guide, :class => :node
+      %span.muted •
+      = user_profile_link(article_user, :class => :dark)
+      %span.muted •
+      - if comments_count > 0
+        = time_ago_in_words(article.last_replied_at)
+        %span.muted •
+        最后回复来自
+        = nickname_profile_link(article.user.nickname)
+      - else
+        = time_ago_in_words(article.created_at)
+

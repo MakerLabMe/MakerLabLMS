@@ -1,7 +1,7 @@
 class GuidesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :find_guide_and_auth, :only => [:edit_title,:update_title, :move, :destroy]
-  before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
+  before_filter :only => [:new_from_home, :create_from_home] do |c|
     auth_admin
   end
 

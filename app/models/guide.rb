@@ -11,6 +11,8 @@ class Guide < ActiveRecord::Base
   has_many :notifications, :as => :notifiable, :dependent => :destroy
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
 
+  validates :category_id, :user_id, :title, :presence => true
+
   after_create :send_notifications
 
   def notifiable_title

@@ -1,4 +1,5 @@
 - guide_user = guide.cached_assoc_object(:user)
 - guide_node = guide.cached_assoc_object(:category)
-= render "guides/#{Siteconf.topic_list_style}_guide", :guide_user => guide_user, :guide_node => guide_node, :guide => guide
+- guide_articles = guide.articles
+= render "guides/#{Siteconf.topic_list_style}_guide", :guide_user => guide_user, :guide_node => guide_node, :guide => guide, :guide_articles => guide_articles
 

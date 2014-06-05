@@ -1,0 +1,12 @@
+- comments_count = article.comments_count
+.celle{:class => article_user.can_manage_site? ? 'admin' : ''}
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td{:valign => :top, :style => 'padding-left: 12px'}
+        - if comments_count > 0
+          .fr
+            = link_to comments_count, [article_guide,article], :class => :article_count
+        .sep3
+        %span{:style => 'font-size: 12px; line-height: 100%'}
+          = link_to article.title, [article_guide,article], :class => 'rabel topic'
+

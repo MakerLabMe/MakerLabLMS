@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140603151147) do
+ActiveRecord::Schema.define(:version => 20140604120603) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -50,7 +50,16 @@ ActiveRecord::Schema.define(:version => 20140603151147) do
     t.datetime "updated_at",                         :null => false
     t.integer  "comments_count",  :default => 0
     t.boolean  "comments_closed", :default => false
+    t.datetime "involved_at"
+    t.string   "last_replied_by", :default => ""
+    t.datetime "last_replied_at"
+    t.integer  "hit"
+    t.integer  "user_id"
   end
+
+  add_index "articles", ["guide_id"], :name => "index_articles_on_guide_id"
+  add_index "articles", ["involved_at"], :name => "index_articles_on_involved_at"
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"

@@ -34,6 +34,8 @@ html
               input#q.form-control type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
           ul.nav.navbar-nav.navbar-right
             = nav_item(t(:homepage), root_path)
+            = nav_item("学习", guides_path)
+            = nav_item("论坛", topics_path)
             - if user_signed_in?
               li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
               li= nav_item '个人设置', settings_path

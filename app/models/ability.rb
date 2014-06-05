@@ -12,6 +12,10 @@ class Ability
       guide.allow_modification_by?(user)
     end
 
+    can :update, Article do |article|
+      article.allow_modification_by?(user)
+    end
+
     can :update, Bookmark do |bookmark|
       bookmark.user == user
     end

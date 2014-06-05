@@ -1,0 +1,6 @@
+.box
+  .cell
+    = build_navigation [link_to(@guide.title, @guide)]
+  .inner
+    %h2 创建新文章
+    = render 'form', :guide => @guide, :article => @article, :comments_closed => false
