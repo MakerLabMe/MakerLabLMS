@@ -19,7 +19,13 @@ class GuidesController < ApplicationController
           current_page = 1
         end
 
-        @guides = Guide.cached_pagination(current_page, per_page, 'updated_at')
+        if params[:c].present?
+          @category = Category.find_cached(params[:c])
+          @guides = @category.guides.cached_pagination(current_page, per_page, 'updated_at')
+          @title = @category.title
+        else
+          @guides = Guide.cached_pagination(current_page, per_page, 'updated_at')
+        end
 
         @canonical_path = guides_path
         @canonical_path += "?page=#{current_page}" if current_page > 1

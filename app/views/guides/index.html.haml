@@ -1,3 +1,5 @@
+- content_for :rightbar do
+  = render 'shared/categories'
 .box
   .cell
     = build_navigation([@title])
@@ -7,8 +9,9 @@
 .clearfix
 #masonry-container.clearfix.transitions-enabled.has-gutters
   = render @guides
-.inner{:align => :center}
-  = paginate @guides
+.box
+  .inner{:align => :center}
+    = paginate @guides
 
 :javascript
   var $container = $('#masonry-container');

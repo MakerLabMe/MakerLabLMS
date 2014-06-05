@@ -16,12 +16,10 @@
       .cell
         .muted
           %a{:href => settings_path + "#avatar", :class => 'btn btn-sm btn-info btn-block'} 立刻上传个性头像~
-    .inner.muted
-      - if @unread_count > 0
+    - if @unread_count > 0
+      .inner.muted
         = image_tag 'dot_orange.png', :class => :icon, :align => :top
         = link_to "#{@unread_count} 条未读提醒", notifications_path
-      - else
-        暂无提醒
 - else
   .box
     .cell

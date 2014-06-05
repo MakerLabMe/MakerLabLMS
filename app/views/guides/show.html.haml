@@ -1,3 +1,5 @@
+- content_for :rightbar do
+  = render 'shared/community_stats'
 = render 'guides/show/bookmarked_users'
 = render 'guides/show/manage'
 
@@ -20,7 +22,7 @@
     .header
       .pull-right
         = user_profile_avatar_link(guide_user, :large)
-      = build_navigation([link_to("学习系统", guides_path, :class => :rabel),link_to(@category.title, @category, :class => :rabel)], 'bigger')
+      = build_navigation([link_to("学习系统", guides_path, :class => :rabel),link_to(@category.title, "#{guides_url}?c=#{@category.id}", :class => :rabel)], 'bigger')
       .sep10
       %h1#topic_title
         = Rabel::Base.make_mention_links(Rabel::Base.h(@guide.title)).html_safe

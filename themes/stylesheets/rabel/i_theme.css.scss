@@ -136,6 +136,43 @@ a.category:hover {
   color: #777;
   text-decoration: none;
 }
+.pagination ul {
+display: inline-block;
+margin-left: 0;
+margin-bottom: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+ul, ol {
+padding: 0;
+margin: 0 0 10px 25px;
+}
+.pagination ul>li {
+display: inline;
+}
+
+.pagination ul>li>a, .pagination ul>li>span {
+float: left;
+padding: 4px 12px;
+line-height: 20px;
+text-decoration: none;
+background-color: #FFF;
+border: 1px solid #DDD;
+border-left-width: 0;
+}
+
+.pagination ul>li>a:hover, .pagination ul>li>a:focus, .pagination ul>.active>a, .pagination ul>.active>span {
+background-color: #F5F5F5;
+}
+.pagination ul>.active>a, .pagination ul>.active>span {
+color: #999;
+cursor: default;
+}
 
 .created {
   color: #CCCCCC;

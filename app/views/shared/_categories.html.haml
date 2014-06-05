@@ -1,0 +1,6 @@
+.box
+  .box-header
+    学习教程分类
+  .inner
+    -Category.cached_all().each do |category|
+      =link_to category.title,"#{guides_url}?c=#{category.id}", :class => "rabel item_node"
