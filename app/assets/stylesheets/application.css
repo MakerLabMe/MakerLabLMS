@@ -3,5 +3,8 @@
  * = require bootstrap
  * = require jquery.facebox
  * = require core
+ *= require 'masonry/fluid'
+ *= require 'masonry/gutters'
+ *= require 'masonry/transitions'
  *
  */

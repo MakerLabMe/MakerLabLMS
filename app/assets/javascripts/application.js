@@ -10,3 +10,5 @@
 //= require jquery_at_caret
 //= require jquery_smooth_scroll
 //= require rabel
+//= require masonry/jquery.imagesloaded.min
+//= require masonry/jquery.masonry

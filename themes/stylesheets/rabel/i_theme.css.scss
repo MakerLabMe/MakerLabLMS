@@ -51,12 +51,90 @@ img {
   max-width: 100%;
 }
 
+h2.guide_title {
+  font-size: 17px;
+  line-height: 150%;
+  font-weight: normal;
+}
+
 .guide-subtitle {
+  padding-top: 5px;
   padding-bottom: 5px;
+  
+  a {
+    color: #778087;
+  }
+  a:hover {
+    color: #777;
+    text-decoration: none;
+  }
 }
 
 .guide-overview {
   margin-top: 5px;
+  a {
+    color: #778087;
+  }
+  a:hover {
+    color: #777;
+    text-decoration: none;
+  }
+}
+
+.box-guide {
+  border: 1px solid #ccc;
+  width: 32%;
+  padding: 5px 10px;
+  background: white;
+  margin: 5px 0;
+
+  h5,p {
+    color: black;
+  }
+}
+.box-guide:hover {
+  border: 1px solid #F11D61;
+}
+
+@media only screen and ( max-width: 1000px ) /* 640px */
+{
+    .box-guide
+    {
+        width: 48%; /* 305px */
+        margin-bottom: 0.938em; /* 15px */
+    }
+}
+@media only screen and ( max-width: 500px ) /* 640px */
+{
+    .box-guide
+    {
+        width: 98%; /* 305px */
+        margin-bottom: 0.938em; /* 15px */
+    }
+}
+#masonry-container {
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+a.category:link, a.category:visited, a.category:active {
+  background-color: #B1E0E9;
+  color: $muted;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 10px;
+  padding: 4px 4px 3px;
+  text-decoration: none;
+}
+
+a.category:hover {
+  background-color: #92CEBB;
+  color: #777;
+  text-decoration: none;
 }
 
 .created {

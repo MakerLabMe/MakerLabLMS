@@ -1,19 +1,21 @@
-.col-md-4{:class => "col-lg-4 col-sm-4"}
-  .box
-    .cell.topic{:class => guide_user.can_manage_site? ? 'admin' : ''}
-      .item_title2
-        %h2.topic_title
-          = link_to guide.title, guide_path(guide), :class => 'rabel topic'
-        %h5.guide-subtitle
-          =guide.subtitle
+.box-guide
+  .cell.topic{:class => guide_user.can_manage_site? ? 'admin' : ''}
+    .item_title2
+      %h2.guide_title
+        = link_to guide.title, guide_path(guide), :class => 'rabel topic'
+      %h5.guide-subtitle
+        =link_to guide.subtitle, guide_path(guide)
+      =link_to guide_path(guide) do
         = image_tag guide.img unless guide.img.nil?
-        .guide-overview
-          =guide.overview
-        - guide.articles.each do |article|
-          = render "articles/simple_article", :article_user => guide_user, :article_guide => guide, :article => article
-        .topic-meta
-          = link_to guide_node.title, guide_node, :class => :node
+      .guide-overview
+        =link_to guide.overview, guide_path(guide)
+      - guide.articles.each do |article|
+        = render "articles/simple_article", :article_user => guide_user, :article_guide => guide, :article => article
+      .topic-meta
+        = link_to guide_node.title, guide_node, :class => :category
+        %span.muted •
+        = user_profile_link(guide_user, :class => :dark)
+        - if user_signed_in? && current_user.can_manage_site?
           %span.muted •
-          = user_profile_link(guide_user, :class => :dark)
-          %span.muted •
+          = link_to "编辑",edit_guide_path(guide), :class => :dark
 

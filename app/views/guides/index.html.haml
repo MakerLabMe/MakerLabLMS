@@ -5,6 +5,20 @@
       .pull-right
         = link_to '创建新教程', new_from_home_guides_path, :class => 'btn btn-success btn-sm btn-new-topic'
 .clearfix
+#masonry-container.clearfix.transitions-enabled.has-gutters
   = render @guides
-  .inner{:align => :center}
-    = paginate @guides
+.inner{:align => :center}
+  = paginate @guides
+
+:javascript
+  var $container = $('#masonry-container');
+  $container.imagesLoaded( function(){
+
+    $container.masonry({
+      itemSelector: '.box-guide',
+      columnWidth:0,
+      gutterWidth: 5
+    });
+
+  });
+
