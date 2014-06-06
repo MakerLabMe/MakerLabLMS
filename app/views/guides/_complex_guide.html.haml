@@ -12,7 +12,7 @@
       - guide.articles.each do |article|
         = render "articles/simple_article", :article_user => guide_user, :article_guide => guide, :article => article
       .topic-meta
-        = link_to guide_node.title, guide_node, :class => :category
+        = link_to guide_node.title, "#{guides_url}?c=#{guide_node.id}", :class => :category
         %span.muted •
         = user_profile_link(guide_user, :class => :dark)
         - if user_signed_in? && current_user.can_manage_site?

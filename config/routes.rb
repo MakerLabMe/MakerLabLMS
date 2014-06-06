@@ -17,10 +17,6 @@ Rabel::Application.routes.draw do
   end
 
 
-  resources :categories
-
-
-
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'
   get 'member/:nickname' => 'users#show', :as => :member

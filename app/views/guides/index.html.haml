@@ -2,7 +2,7 @@
   = render 'shared/categories'
 .box
   .cell
-    = build_navigation([@title])
+    = build_navigation([link_to("学习系统",guides_path, :class => :rabel),@title])
     - if user_signed_in? && current_user.can_manage_site?
       .pull-right
         = link_to '创建新教程', new_from_home_guides_path, :class => 'btn btn-success btn-sm btn-new-topic'
