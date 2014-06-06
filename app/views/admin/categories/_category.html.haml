@@ -5,6 +5,6 @@
       %span.gray /
       - if category.can_delete?
         = admin_delete_button(category, :remote => true)
-    = link_to category.title, category_path(category)
+    = link_to category.title, "#{guides_url}?c=#{category.id}"
 //  = render plane.nodes.default_order
 .sep10

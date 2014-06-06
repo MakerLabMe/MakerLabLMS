@@ -14,7 +14,7 @@
           %strong.green
             = guide.id
         %td.auto
-          = link_to guide.category.title, category_path(guide.category)
+          = link_to guide.category.title, "#{guides_url}?c=#{guide.category.id}"
         %td.auto
           = link_to guide.title, guide
         %td.auto
