@@ -6,7 +6,7 @@
       %h5.guide-subtitle
         =link_to guide.subtitle, guide_path(guide)
       =link_to guide_path(guide) do
-        = image_tag guide.img unless guide.img.nil?
+        = image_tag guide.img,:class => "img-thumbnail" unless guide.img.nil?
       .guide-overview
         =link_to guide.overview, guide_path(guide)
       - guide.articles.each do |article|

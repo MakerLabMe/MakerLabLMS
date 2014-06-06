@@ -31,6 +31,7 @@ Rabel::Application.routes.draw do
   get '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
 
   get 'my/topics' => 'users#my_topics', :as => :my_topics
+  get 'member/:nickname/marks' => 'users#my_topics', :as => :my_topics
   get 'my/following' => 'users#my_following', :as => :my_following
   get 'page/:key' => 'pages#show', :as => :page
   get 'goodbye' => 'welcome#goodbye'

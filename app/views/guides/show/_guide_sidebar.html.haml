@@ -1,0 +1,8 @@
+- content_for :rightbar do
+  .box
+    %h2.box-header
+      #{@guide.title}
+    .cell
+      #{@guide.subtitle}
+    - @guide.articles.each do |article|
+      = render "articles/simple_article", :article_user => @guide.user, :article_guide => @guide, :article => article

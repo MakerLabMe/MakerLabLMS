@@ -1,4 +1,10 @@
-.box.fix_cell
-  .cell= build_navigation([@title])
-  = render @my_topics
-  .inner
+.box
+  .box-header
+    = @user.nickname
+    收藏的学习
+  = render :partial => 'guides/profile_guide', :collection => @user.bookmarked_guides, :as => :guide, :locals => {:guide_user => @user}
+.box
+  .box-header
+    = @user.nickname
+    收藏的话题
+  = render :partial => 'topics/profile_topic', :collection => @user.bookmarked_topics, :as => :topic, :locals => {:topic_user => @user}

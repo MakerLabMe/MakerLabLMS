@@ -1,9 +1,10 @@
+- guide_node = guide.category
 .cell.topic{:class => guide_user.can_manage_site? ? 'admin' : ''}
   %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
     %tr
       %td{:valign => :middle, :width => :auto}
         %span.bigger
-          = link_to guide.title, topic, :class => 'rabel topic'
+          = link_to guide.title, guide, :class => 'rabel topic'
         .topic-meta
-          = link_to guide_node.title, guide_node, :class => :node
+          = link_to guide_node.title, "#{guides_url}?c=#{guide_node.id}", :class => :node
       %td{:valign => :middle, :width => 40, :align => :right}

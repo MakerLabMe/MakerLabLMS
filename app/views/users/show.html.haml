@@ -80,6 +80,24 @@
 .box
   .box-header
     = @user.nickname
+    收藏的学习
+  = render :partial => 'guides/profile_guide', :collection => @user.bookmarked_guides, :as => :guide, :locals => {:guide_user => @user}
+  - if @user.bookmarked_topics.any?
+    .inner
+      %span.chevron »
+      %small= link_to "#{@user.nickname} 收藏的更多学习", my_topics_path(@user.nickname), :class => :rabel
+.box
+  .box-header
+    = @user.nickname
+    收藏的话题
+  = render :partial => 'topics/profile_topic', :collection => @user.bookmarked_topics, :as => :topic, :locals => {:topic_user => @user}
+  - if @user.bookmarked_topics.any?
+    .inner
+      %span.chevron »
+      %small= link_to "#{@user.nickname} 收藏的更多主题", my_topics_path(@user.nickname), :class => :rabel
+.box
+  .box-header
+    = @user.nickname
     最近创建的话题
   = render :partial => 'topics/profile_topic', :collection => @user.latest_created_topics, :as => :topic, :locals => {:topic_user => @user}
   - if @user.topics.any?

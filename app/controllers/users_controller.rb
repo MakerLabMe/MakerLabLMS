@@ -1,6 +1,6 @@
 # encoding: utf-8
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :topics]
+  before_filter :authenticate_user!, :except => [:show, :topics, :my_topics]
 
   def show
     @user = User.find_by_attr_cached!(:nickname, params[:nickname])
@@ -85,8 +85,16 @@ class UsersController < ApplicationController
   end
 
   def my_topics
-    @my_topics = current_user.bookmarked_topics
-    @title = '我收藏的话题'
+    if params[:nickname].present?
+      @user = User.find_by_attr_cached!(:nickname, params[:nickname])
+      @my_topics = @user.bookmarked_topics
+      @my_guides = @user.bookmarked_guides
+      @title = @user.nickname + ' 的收藏'
+    else
+      @my_topics = current_user.bookmarked_topics
+      @my_guides = current_user.bookmarked_guides
+      @title = '我的收藏'
+    end
 
     respond_to do |format|
       format.html

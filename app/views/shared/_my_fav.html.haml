@@ -1,6 +1,11 @@
 %tr
   %td.with_separator{:width => '34%', :align => :center}
-    = link_to my_topics_path, :class => :dark, :style => 'display: block;' do
+    = link_to my_topics_path(current_user.nickname), :class => :dark, :style => 'display: block;' do
+      %span.bigger= current_user.bookmarked_guides_count
+      .sep3
+      %span.gray 我的学习
+  %td.with_separator{:width => '34%', :align => :center}
+    = link_to my_topics_path(current_user.nickname), :class => :dark, :style => 'display: block;' do
       %span.bigger= current_user.bookmarked_topics_count
       .sep3
       %span.gray 话题收藏

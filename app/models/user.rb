@@ -71,6 +71,15 @@ class User < ActiveRecord::Base
     self.bookmarks.where(:bookmarkable_type => 'Topic').count
   end
 
+  def bookmarked_guides_count
+    self.bookmarks.where(:bookmarkable_type => 'Guide').count
+  end
+
+  def bookmarked_guides
+    ids = self.bookmarks.select(:bookmarkable_id).where(:bookmarkable_type => 'Guide').collect(&:bookmarkable_id)
+    Guide.find(ids)
+  end
+
   def bookmarked_topics
     ids = self.bookmarks.select(:bookmarkable_id).where(:bookmarkable_type => 'Topic').collect(&:bookmarkable_id)
     Topic.find(ids)
