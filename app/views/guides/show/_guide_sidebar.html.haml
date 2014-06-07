@@ -1,7 +1,15 @@
 - content_for :rightbar do
-  .box
+  .box{:data => {:spy => "affix",:offset_top => "220",:offset_bottom => "200"}}
     %h2.box-header
       #{@guide.title}
+      - if user_signed_in?
+        .pull-right
+          - if current_user.bookmarked?(@guide)
+            = link_to "取消收藏 #{@guide.bookmarks.count}", current_user.bookmark_of(@guide), :method => :delete, :class => 'btn btn-xs btn-info unbookmark'
+          - else
+            = link_to "收藏 #{@guide.bookmarks.count}", guide_bookmarks_path(@guide), :method => :post, :class => 'btn btn-xs btn-info bookmark'
+      - else
+        = link_to "收藏", new_user_session_path, :class => 'btn btn-xs btn-info bookmark'
     .cell
       #{@guide.subtitle}
     - @guide.articles.each do |article|

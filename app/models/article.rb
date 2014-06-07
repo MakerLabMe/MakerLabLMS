@@ -20,17 +20,18 @@ class Article < ActiveRecord::Base
   validates :guide_id, :user_id, :title, :presence => true
 
   after_create :send_notifications
+  after_save :update_guide
 
   def last_comment
     self.comments.order('created_at ASC').last
   end
 
   def allow_modification_by?(user)
-    (self.user == user) || user.can_manage_site?
+    user.can_manage_site?
   end
 
   def notifiable_title
-    self.guide.title + "-" + title
+    self.guide.title + " - " + title
   end
 
   def notifiable_path
@@ -59,11 +60,11 @@ class Article < ActiveRecord::Base
     mentioned_names.map { |name| User.find_by_nickname(name) }.compact
   end
 
-  def prev_topic(guide)
+  def prev_article(guide)
     guide.articles.where(['id < ?', self.id]).order('created_at DESC').first
   end
 
-  def next_topic(guide)
+  def next_article(guide)
     guide.articles.where(['id > ?', self.id]).order('created_at ASC').first
   end
 
@@ -79,5 +80,9 @@ class Article < ActiveRecord::Base
           self.content
         )
       end
+    end
+
+    def update_guide
+      self.guide.touch
     end
 end

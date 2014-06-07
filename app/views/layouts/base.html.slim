@@ -29,19 +29,26 @@ html
             = link_to Siteconf.site_name, root_path, class: 'navbar-brand'
 
         .collapse.navbar-collapse#navbar-collapse
+          ul.nav.navbar-nav.navbar-left
+            = nav_item(t(:homepage), root_path)
+            = nav_item("学习", guides_path)
+            = nav_item("论坛", topics_path)
           form.navbar-form.navbar-left
             .form-group
               input#q.form-control type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
           ul.nav.navbar-nav.navbar-right
-            = nav_item(t(:homepage), root_path)
-            = nav_item("学习", guides_path)
-            = nav_item("论坛", topics_path)
             - if user_signed_in?
-              li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
-              li= nav_item '个人设置', settings_path
               - if current_user.can_manage_site?
                 li= nav_item t(:dashboard), admin_root_path
-              li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+                li
+                  =link_to ("<span class=\"label label-#{@unread_count>0? "danger":"default"}\">#{@unread_count}</span>").html_safe,notifications_path, :title => "您收到的消息"
+              li.dropdown
+                =link_to ("#{current_user.nickname}"+content_tag(:span,"",class:"caret")).html_safe,(member_path(url_encode(current_user.nickname))), :data => {:toggle=>"dropdown",:target => "#"}
+                ul.dropdown-menu
+                  li= nav_item "我的收藏 <span class='label label-default'>#{current_user.bookmarks.count}</span>".html_safe, my_topics_path(current_user.nickname)
+                  li= nav_item "个人主页", member_path(url_encode(current_user.nickname))
+                  li= nav_item '个人设置', settings_path
+                  li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
             - else
               = nav_item(t(:sign_up), new_user_registration_path)
               = nav_item(t(:sign_in), new_user_session_path)
@@ -49,7 +56,7 @@ html
     #wrap
       .container#page-main
         .row
-          = content_for?(:content) ? yield(:content) : yield
           = yield :sidebar
+          = content_for?(:content) ? yield(:content) : yield
     = render 'shared/footer'
 

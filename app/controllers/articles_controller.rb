@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :get_guide, :except => [:show]
+  before_filter :except => [:index, :show] do |c|
+    auth_admin
+  end
   # GET /articles
   # GET /articles.json
   def index
@@ -45,8 +48,8 @@ class ArticlesController < ApplicationController
     @canonical_path += "?p=#{@current_page}" if @total_pages > 1
     @seo_description = "#{@guide.title} - #{@guide.user.nickname} - #{@article.title}"
 
-    @prev_topic = @article.prev_topic(@guide)
-    @next_topic = @article.next_topic(@guide)
+    @prev_article = @article.prev_article(@guide)
+    @next_article = @article.next_article(@guide)
 
     respond_to do |format|
       format.html
@@ -78,7 +81,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        redirect_to @guide
+        format.html { redirect_to @guide}
       else
         render :new
       end

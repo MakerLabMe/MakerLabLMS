@@ -4,5 +4,5 @@
       - if current_user.bookmarked?(@guide)
         = link_to '取消收藏', current_user.bookmark_of(@guide), :method => :delete, :class => 'op cancel'
       - else
-        = link_to '加入收藏', topic_bookmarks_path(@guide), :method => :post, :class => :op
+        = link_to '收藏', topic_bookmarks_path(@guide), :method => :post, :class => :op
     &nbsp;&nbsp;

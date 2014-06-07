@@ -1,3 +1,4 @@
+= render 'guides/show/guide_sidebar'
 = render 'topics/show/manage'
 
 - content_for :template_js do
@@ -19,7 +20,7 @@
     .header
       .pull-right
         = user_profile_avatar_link(article_user, :large)
-      = build_navigation([link_to(@guide.title, @guide, :class => :rabel)], 'bigger')
+      = build_navigation([link_to("学习系统", guides_path, :class => :rabel),link_to(@guide.category.title, "#{guides_url}?c=#{@guide.category.id}", :class => :rabel),@guide.title], 'bigger')
       .sep10
       %h1#topic_title
         = Rabel::Base.make_mention_links(Rabel::Base.h(@article.title)).html_safe
@@ -37,15 +38,16 @@
     .inner
       - if @next_article.present?
         .pull-right
-          = link_to proper_length(@next_article.title, 15), @next_topic, :class => :rabel, :rel => :prev
+          = link_to proper_length(@next_article.title, 15), @next_article, :class => :rabel, :rel => :prev
           %span.guillemet.right-guillemet »
 
       - if @prev_article.present?
         .pull-left
           %span.guillemet.left-guillemet «
-          = link_to proper_length(@prev_article.title, 15), @prev_topic, :class => :rabel, :rel => :next
+          = link_to proper_length(@prev_article.title, 15), @prev_article, :class => :rabel, :rel => :next
       .clearfix
 
+  = render 'shared/box_tip', :tip => "本文最后更新于：" + time_ago_in_words(@guide.updated_at)
 = render 'articles/show/comments' if @comments.any?
 
 - if @article.comments_closed?

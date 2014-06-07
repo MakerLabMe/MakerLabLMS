@@ -96,6 +96,11 @@ h2.guide_title {
   border: 1px solid #F11D61;
 }
 
+.affix {
+  top:5px;
+  width: 21%;
+}
+
 @media only screen and ( max-width: 1000px ) /* 640px */
 {
     .box-guide
@@ -104,12 +109,16 @@ h2.guide_title {
         margin-bottom: 0.938em; /* 15px */
     }
 }
-@media only screen and ( max-width: 500px ) /* 640px */
+@media only screen and ( max-width: 770px ) /* 640px */
 {
     .box-guide
     {
         width: 98%; /* 305px */
         margin-bottom: 0.938em; /* 15px */
+    }
+    .affix {
+      top:5px;
+      width: 100%;
     }
 }
 #masonry-container {

@@ -105,7 +105,11 @@ class GuidesController < ApplicationController
     @guide.user = current_user
 
     if @guide.save
-      redirect_to guide_path(@guide)
+      unless @guide.articles.any?
+        redirect_to new_guide_article_path(@guide)
+      else
+        redirect_to guide_path(@guide)
+      end
     else
       render :new_from_home
     end
