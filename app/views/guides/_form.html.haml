@@ -8,4 +8,6 @@
   = f.input :overview,:as => :text, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
   = f.input :img, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '预览图片'
   = f.association :category, :label => false, :prompt => '选择一个分类'
+  .check_box
+    = f.input :publish, :label => '是否马上发布'
   = f.submit (guide.new_record? ? '创建新教程' : '提交修改'), :class => 'btn btn-primary', :data => {:disable_with => t('tips.submitting')}

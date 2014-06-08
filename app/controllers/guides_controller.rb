@@ -22,9 +22,15 @@ class GuidesController < ApplicationController
         if params[:c].present?
           @category = Category.find_cached(params[:c])
           @guides = @category.guides.cached_pagination(current_page, per_page, 'updated_at')
+          #@guides = @category.guides.where(:publish => true).cached_pagination(current_page, per_page, 'updated_at')
           @title = @category.title
         else
           @guides = Guide.cached_pagination(current_page, per_page, 'updated_at')
+          #if current_user.can_manage_site?
+          #  @guides = Guide.cached_pagination(current_page, per_page, 'updated_at')
+          #else
+          #  @guides = Guide.where(:publish => true).cached_pagination(current_page, per_page, 'updated_at')
+          #end
         end
 
         @canonical_path = guides_path
