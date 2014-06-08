@@ -66,7 +66,7 @@ gem 'carrierwave', "~> 0.6.2"
 gem 'carrierwave-upyun', '~> 0.1.6'
 gem 'rmagick'
 gem 'mime-types'
-gem 'redcarpet'
+gem 'redcarpet', '~> 3.1.2'
 gem 'coderay'
 gem 'kgio'
 gem 'dalli'

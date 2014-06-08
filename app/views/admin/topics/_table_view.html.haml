@@ -6,6 +6,7 @@
       %th.auto{:align => :left} 标题
       %th.auto{:align => :left} 作者
       %th.auto{:align => :right} 回复数
+      %th.auto{:align => :right} 收藏数
       %th.auto{:align => :right} 浏览量
       %th.auto{:align => :right} 创建时间
       %th.w100 操作
@@ -23,6 +24,8 @@
           = user_profile_link(topic.user)
         %td.auto{:align => :right}
           = topic.comments_count
+        %td.auto{:align => :right}
+          = topic.bookmarks.count
         %td.auto{:align => :right}
           = topic.hit
         %td.auto{:align => :right}

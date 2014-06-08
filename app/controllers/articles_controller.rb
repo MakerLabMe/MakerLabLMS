@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
     raise ActiveRecord::RecordNotFound.new if params[:id].to_i.to_s != params[:id]
 
     @article = Article.find_cached(params[:id])
+    @current_article_id = @article.id
     store_location
     # NOTE
     # We can't use @topic.increment!(:hit) here,

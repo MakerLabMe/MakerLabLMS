@@ -9,8 +9,9 @@
         = image_tag guide.img,:class => "img-thumbnail" unless guide.img.nil?
       .guide-overview
         =link_to guide.overview, guide_path(guide)
+      .list-group
       - guide.articles.each do |article|
-        = render "articles/simple_article", :article_user => guide_user, :article_guide => guide, :article => article
+        = render "articles/simple_article", :article_user => guide_user, :article_guide => guide, :article => article, :current_article_id => 0
       .topic-meta
         = link_to guide_node.title, "#{guides_url}?c=#{guide_node.id}", :class => :category
         %span.muted •

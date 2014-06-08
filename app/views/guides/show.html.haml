@@ -15,16 +15,17 @@
 
 - guide_user = @guide.cached_assoc_object(:user)
 - first_article = @guide.articles.cached_all().first
+- next_article = first_article.next_article(@guide)
 
 .box
   %article
     .header
       .pull-right
         = user_profile_avatar_link(guide_user, :large)
-      = build_navigation([link_to("学习系统", guides_path, :class => :rabel),link_to(@category.title, "#{guides_url}?c=#{@category.id}", :class => :rabel),@guide.title], 'bigger')
+      = build_navigation([link_to("学习系统", guides_path, :class => :rabel),link_to(@category.title, "#{guides_url}?c=#{@category.id}", :class => :rabel),link_to(@guide.title,@guide, :class => :rabel)], 'bigger')
       .sep10
       %h1#topic_title
-        = Rabel::Base.make_mention_links(Rabel::Base.h(@guide.title+" - " + first_article.try(:title))).html_safe
+        = Rabel::Base.make_mention_links(Rabel::Base.h( first_article.try(:title))).html_safe
       %small.topic-meta
         By
         = user_profile_link(guide_user, :class => :dark)
@@ -33,13 +34,12 @@
       .clearfix
     .inner
       .content.topic_content= format_topic(first_article.content)
-
-      - if user_signed_in?
+    .inner
+      - if next_article.present?
         .pull-right
-          - if current_user.bookmarked?(@guide)
-            = link_to "取消收藏 #{@total_bookmarks}", current_user.bookmark_of(@guide), :method => :delete, :class => 'btn btn-xs btn-info unbookmark'
-          - else
-            = link_to "收藏 #{@total_bookmarks}", guide_bookmarks_path(@guide), :method => :post, :class => 'btn btn-xs btn-info bookmark'
+          = link_to proper_length(next_article.title, 15), [@guide,next_article], :class => :rabel, :rel => :prev
+          %span.guillemet.right-guillemet »
+
       .clearfix
     = render 'shared/box_tip', :tip => "教程最后更新于：" + time_ago_in_words(@guide.updated_at)
     = render 'shared/box_tip', :tip => link_to("发表评论或问题",guide_article_path(@guide,first_article)+"#comment_content")

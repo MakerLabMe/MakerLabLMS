@@ -21,6 +21,7 @@ Rabel::Application.routes.draw do
   get 'settings' => 'users#edit'
   get 'member/:nickname' => 'users#show', :as => :member
   get 'member/:nickname/topics' => 'users#topics', :as => :member_topics
+  get 'member/:nickname/guides' => 'users#guides', :as => :member_guides
   post 'member/:nickname/follow' => 'users#follow', :as => :follow_user
   post 'member/:nickname/unfollow' => 'users#unfollow', :as => :unfollow_user
   put 'users/update_account' => 'users#update_account', :as => :update_account
@@ -30,7 +31,6 @@ Rabel::Application.routes.draw do
   get 't/:id' => 'topics#show', :as => :t
   get '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
 
-  get 'my/topics' => 'users#my_topics', :as => :my_topics
   get 'member/:nickname/marks' => 'users#my_topics', :as => :my_topics
   get 'my/following' => 'users#my_following', :as => :my_following
   get 'page/:key' => 'pages#show', :as => :page

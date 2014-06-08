@@ -4,7 +4,7 @@
       %th.w50 ID
       %th.auto{:align => :left} 分类
       %th.auto{:align => :left} 标题
-      %th.auto{:align => :left} 作者
+      %th.auto{:align => :left} 收藏数
       %th.auto{:align => :right} 创建时间
       %th.w100 操作
   %tbody
@@ -18,7 +18,7 @@
         %td.auto
           = link_to guide.title, guide
         %td.auto
-          = user_profile_link(guide.user)
+          = guide.bookmarks.count
         %td.auto{:align => :right}
           %small= time_ago_in_words(guide.created_at)
         %td.w100

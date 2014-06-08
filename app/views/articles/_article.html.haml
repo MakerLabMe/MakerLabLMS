@@ -1,5 +1,5 @@
 - article_user = article.cached_assoc_object(:user)
 - article_guide = article.cached_assoc_object(:guide)
 - comments_count = article.comments_count
-= render "articles/#{Siteconf.topic_list_style}_article", :article_user => article_user, :article_guide => article_guide, :article => article
+= render "articles/content_article", :article_user => article_user, :article_guide => article_guide, :article => article
 

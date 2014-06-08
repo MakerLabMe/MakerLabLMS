@@ -24,6 +24,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def guides
+    @user = User.find_by_attr_cached!(:nickname, params[:nickname])
+
+    @current_page = params[:page].present? ? params[:page] : 1
+    @guides = @user.cached_assoc_pagination(:guides, @current_page, 20, 'created_at')
+
+    @title = "#{@user.nickname} 创建的所有学习教程"
+    @seo_description = "#{@title} - #{Siteconf.site_name}"
+  end
   def topics
     @user = User.find_by_attr_cached!(:nickname, params[:nickname])
 

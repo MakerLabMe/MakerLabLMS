@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     self.topics.order('created_at DESC').limit(10)
   end
 
+  def latest_created_guides
+    self.guides.order('created_at DESC').limit(10)
+  end
+
   def latest_comments
     self.comments.order('created_at DESC').limit(10)
   end

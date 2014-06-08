@@ -54,6 +54,7 @@ class GuidesController < ApplicationController
 
     @title = @guide.title
     @category = @guide.cached_assoc_object(:category)
+    @current_article_id = @guide.articles.first.id
 
     @total_bookmarks = @guide.bookmarks.count
 
