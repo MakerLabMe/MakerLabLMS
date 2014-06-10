@@ -20,6 +20,15 @@ xml.urlset :"xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
         xml.priority('0.9')
       end
     end
+    @guides.each do |guide|
+      xml.url do
+        xml.loc(guide_url(guide.id))
+        lastmod = guide.updated_at
+        xml.lastmod(lastmod.strftime('%Y-%m-%d'))
+        xml.changefreq('daily')
+        xml.priority('0.9')
+      end
+    end
     @pages.each do |page|
       xml.url do
         xml.loc(page_url(page.key))

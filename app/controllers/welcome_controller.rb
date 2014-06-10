@@ -49,6 +49,7 @@ class WelcomeController < ApplicationController
 
         @pages = Page.only_published.all
         @topics = Topic.select('id, comments_count, updated_at').order('created_at DESC').limit(max - @pages.size - 1)
+        @guides = Guide.select('id,  updated_at').order('created_at DESC').limit(max - 1)
       }
     end
   end
