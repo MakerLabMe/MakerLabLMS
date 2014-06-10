@@ -1,7 +1,11 @@
 # encoding: utf-8
 class WelcomeController < ApplicationController
+
+  layout 'welcome'
+
   def index
     @topics = Topic.home_topics(Siteconf::HOMEPAGE_TOPICS)
+    @guides = Guide.cached_all('updated_at DESC').take(15)
     @sticky_topics = Topic.sticky_topics
     @canonical_path = '/'
     @full_title = site_intro

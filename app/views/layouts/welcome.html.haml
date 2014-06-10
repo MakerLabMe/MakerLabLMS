@@ -1,0 +1,13 @@
+- content_for :content do
+  .col-md-6.col-lg-6.col-sm-6
+    = render 'shared/alert'
+    = yield
+
+- content_for :sidebar do 
+  .col-md-6.col-lg-6.col-sm-6#Rightbar
+    = render 'shared/sidebar_box_lms'
+    = yield :rightbar
+    = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad
+
+= render :template => 'layouts/base'
+
