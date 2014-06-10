@@ -1,16 +1,5 @@
-## Rabel
+## MakerLab Learning Managment System学习系统
 
-基于 Ruby on Rails 框架开发的开源论坛系统。
+基于Rabel(https://github.com/daqing/rabel)整合了论坛、评论、收藏等功能的学习系统。
 
-## 理念
-
-去掉一切繁杂功能，让论坛回归交流本质。
-
-## 授权协议
-
-采用[MIT](http://opensource.org/licenses/MIT)开源协议授权。
-
-## 致谢
-
-Rabel 论坛系统受到[Project Babel 2](https://github.com/livid/v2ex)启发，特此感谢。
 
