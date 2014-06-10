@@ -31,6 +31,8 @@ Rabel::Application.routes.draw do
   get 't/:id' => 'topics#show', :as => :t
   get '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
 
+  get '/categories/:id' => redirect('/guides/?c=%{id}'), :constraints => { :id => /\d+/ }
+
   get 'member/:nickname/marks' => 'users#my_topics', :as => :my_topics
   get 'my/following' => 'users#my_following', :as => :my_following
   get 'page/:key' => 'pages#show', :as => :page
