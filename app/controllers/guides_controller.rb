@@ -38,11 +38,11 @@ class GuidesController < ApplicationController
 
         @seo_description = @title
       }
-      #format.atom {
-      #  @feed_items = Guide.recent_topics(Siteconf::HOMEPAGE_TOPICS)
-      #  @last_update = @feed_items.first.updated_at unless @feed_items.empty?
-      #  render :layout => false
-      #}
+      format.atom {
+        @feed_items = Article.cached_all('updated_at DESC').take(Siteconf::HOMEPAGE_TOPICS)
+        @last_update = @feed_items.first.updated_at unless @feed_items.empty?
+        render :layout => false
+      }
     end
   end
 

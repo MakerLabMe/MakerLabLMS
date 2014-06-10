@@ -9,6 +9,9 @@
   - @guides.each do |guide|
     = render "guides/profile_guide", :guide_user => guide.user, :guide_node => guide.category, :guide => guide, :guide_articles => guide.articles
   .inner
+    .pull-right
+      = image_tag 'rss.png', :align => :absmiddle
+      = link_to 'RSS', guides_path(:atom), :target => '_blank', :class => :dark
     &nbsp;
     %span.chevron »
     = link_to '更多新教程', guides_path , :class => :rabel
