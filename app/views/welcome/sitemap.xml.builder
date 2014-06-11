@@ -29,6 +29,19 @@ xml.urlset :"xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
         xml.priority('0.9')
       end
     end
+    @articles.each do |article|
+      xml.url do
+        xml.loc(guide_article_url(article.guide,article))
+        if article.comments_count > 0
+          lastmod = article.last_comment.updated_at
+        else
+          lastmod = article.updated_at
+        end
+        xml.lastmod(lastmod.strftime('%Y-%m-%d'))
+        xml.changefreq('daily')
+        xml.priority('0.9')
+      end
+    end
     @pages.each do |page|
       xml.url do
         xml.loc(page_url(page.key))

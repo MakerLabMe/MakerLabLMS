@@ -43,13 +43,16 @@ class WelcomeController < ApplicationController
         max = 50000
         @lastmod = [
           Topic.order('updated_at DESC').first.try(:updated_at),
+          Guide.order('updated_at DESC').first.try(:updated_at),
+          Article.order('updated_at DESC').first.try(:updated_at),
           Page.only_published.order('updated_at DESC').first.try(:updated_at),
           Comment.order('updated_at DESC').first.try(:updated_at),
         ].compact.max
 
         @pages = Page.only_published.all
-        @topics = Topic.select('id, comments_count, updated_at').order('created_at DESC').limit(max - @pages.size - 1)
-        @guides = Guide.select('id,  updated_at').order('created_at DESC').limit(max - 1)
+        @topics = Topic.select('id, comments_count, updated_at').order('created_at DESC').limit(max - @pages.size - 1 - 11000)
+        @guides = Guide.select('id,  updated_at').order('created_at DESC').limit(1000)
+        @articles = Article.select('id,comments_count,guide_id,  updated_at').order('created_at DESC').limit(10000)
       }
     end
   end
