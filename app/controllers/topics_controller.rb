@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.html {
         per_page = Siteconf::HOMEPAGE_TOPICS
-        @title = '全站最新更改记录'
+        @title = '全站最新话题更改记录'
         if params[:page].present?
           current_page = params[:page].to_i
           @title += " (第 #{current_page} 页)"

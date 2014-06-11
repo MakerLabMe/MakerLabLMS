@@ -7,4 +7,7 @@
           = link_to guide.title, guide, :class => 'rabel topic'
         .topic-meta
           = link_to guide_node.title, "#{guides_url}?c=#{guide_node.id}", :class => :node
+          %span.muted •
+          = "最后更新于 "
+          = time_ago_in_words(guide.updated_at)
       %td{:valign => :middle, :width => 40, :align => :right}

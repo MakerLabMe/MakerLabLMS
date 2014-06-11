@@ -1,7 +1,10 @@
 - content_for :rightbar do
   = render 'welcome/rightbar_planes'
 .box
-  .cell= build_navigation([@title])
+  .cell
+    = build_navigation([@title])
+    .pull-right
+      = link_to '创建新话题', new_from_home_topics_path, :class => 'btn btn-success btn-sm btn-new-topic'
   = render @topics
   .inner{:align => :center}
     = paginate @topics
