@@ -24,6 +24,7 @@
 /.sass-cache
 /public/uploads/
 /public/assets/
+/public/cad
 chromedriver.log
 /vendor/bundle/
 /*.sh
