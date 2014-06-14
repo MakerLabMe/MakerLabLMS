@@ -5,4 +5,4 @@
 # Disallow: /
 
 # Add sitemap here:
-# Sitemap: http://www.example.com/sitemap.xml
+Sitemap: http://www.makerlab.me/sitemap.xml
