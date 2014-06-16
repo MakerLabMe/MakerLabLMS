@@ -1,7 +1,5 @@
-- content_for :sidebar do
-  .col-md-3.col-lg-3.col-sm-4#Rightbar
-    = render 'shared/sidebar_box'
-    = render 'shared/categories'
+- content_for :rightbar do
+  = render 'shared/categories'
 .box
   .cell
     = build_navigation([link_to("学习系统",guides_path, :class => :rabel),@title])
