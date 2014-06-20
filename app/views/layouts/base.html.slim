@@ -40,8 +40,8 @@ html
             - if user_signed_in?
               - if current_user.can_manage_site?
                 li= nav_item t(:dashboard), admin_root_path
-                li
-                  =link_to ("<span class=\"label label-#{@unread_count>0? "danger":"default"}\">#{@unread_count}</span>").html_safe,notifications_path, :title => "您收到的消息"
+              li
+                =link_to ("<span class=\"label label-#{@unread_count>0? "danger":"default"}\">#{@unread_count}</span>").html_safe,notifications_path, :title => "您收到的消息"
               li.dropdown
                 =link_to ("#{current_user.nickname}"+content_tag(:span,"",class:"caret")).html_safe,(member_path(url_encode(current_user.nickname))), :data => {:toggle=>"dropdown",:target => "#"}
                 ul.dropdown-menu
