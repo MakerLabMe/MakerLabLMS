@@ -129,7 +129,8 @@ module ApplicationHelper
     {
       :google => 'http://www.google.com.hk/search?q=',
       :bing => 'http://cn.bing.com/search?q=',
-      :baidu => 'http://www.baidu.com/s?wd='
+      :baidu => 'http://www.baidu.com/s?wd=',
+      :wenLu => 'http://www.wen.lu/?gws_rd=cr#q='
     }
   end
 
