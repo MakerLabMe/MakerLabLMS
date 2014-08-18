@@ -1,7 +1,15 @@
 # encoding: utf-8
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :topics, :my_topics]
+  before_filter :authenticate_user!, :except => [:index, :show, :topics, :my_topics]
+  layout "base", :only => [:index]
 
+  def index
+    @hot_users = User.order("comments_count DESC, topics_count DESC").limit(50)
+    @new_users = User.order("created_at DESC ").limit(50)
+    @title = "MakerLab创客实验室活跃及最新用户"
+    @canonical_path = "/users"
+    @seo_description = "#{@title} - #{Siteconf.site_name}"
+  end
   def show
     @user = User.find_by_attr_cached!(:nickname, params[:nickname])
     store_location

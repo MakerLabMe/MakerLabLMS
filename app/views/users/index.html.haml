@@ -1,0 +1,18 @@
+.box.user_list.clearfix
+  .box-header
+    %h3.center TOP 50 最活跃会员
+  -@hot_users.each do |user|
+    .user
+      .avatar
+        = user_profile_avatar_link(user, :large)
+      .name
+        = user_profile_link(user)
+.box.user_list.clearfix
+  .box-header
+    %h3.center 最新注册会员
+  -@new_users.each do |user|
+    .user
+      .avatar
+        = user_profile_avatar_link(user, :large)
+      .name
+        = user_profile_link(user)
