@@ -98,7 +98,8 @@ module Redcarpet
       end
 
       def raw_html(raw_html)
-        Rabel::Base.h raw_html
+        #Rabel::Base.h raw_html
+        raw_html
       end
 
       def triple_emphasis(text)
