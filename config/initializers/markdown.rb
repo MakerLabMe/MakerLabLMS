@@ -23,7 +23,8 @@ module Redcarpet
       end
 
       def block_html(raw_html)
-        Rabel::Base.h raw_html
+        #Rabel::Base.h raw_html
+        raw_html
       end
 
       def header(text, header_level)
@@ -99,7 +100,7 @@ module Redcarpet
 
       def raw_html(raw_html)
         #Rabel::Base.h raw_html
-        raw_html
+        raw_html.html_safe
       end
 
       def triple_emphasis(text)
