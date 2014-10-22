@@ -3,7 +3,7 @@ module Redcarpet
     class RabelTopicRender < HTML
       def initialize(options={})
         super options.merge({:xhtml => true,
-                            :filter_html => true,
+                            :filter_html => false,
                             :hard_wrap => true})
       end
 
